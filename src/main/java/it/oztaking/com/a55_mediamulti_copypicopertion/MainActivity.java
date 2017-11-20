@@ -42,10 +42,12 @@ public class MainActivity extends AppCompatActivity {
 //        //图片位移
 //        matrix.setTranslate(100,0);
 
-        //图片倒影效果
-        matrix.setScale(1.0f,-1.0f);
-        matrix.postTranslate(0,copyBitmap.getHeight());
-
+//        //图片倒影效果
+//        matrix.setScale(1.0f,-1.0f);
+//        matrix.postTranslate(0,copyBitmap.getHeight());
+        //镜面效果
+        matrix.setScale(-1.0f, 1.0f);
+        matrix.postTranslate(copyBitmap.getWidth(), 0);
 
         canvas.drawBitmap(bitmap, matrix, paint);
 //        new Thread() {
