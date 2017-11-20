@@ -37,7 +37,11 @@ public class MainActivity extends AppCompatActivity {
         final Paint paint = new Paint();
         //作画
         final Matrix matrix = new Matrix();
+        //图片缩小0.5；
         matrix.setScale(0.5f,0.5f);
+        //图片位移
+        matrix.setTranslate(100,0);
+
         canvas.drawBitmap(bitmap, matrix, paint);
 //        new Thread() {
 //            @Override
