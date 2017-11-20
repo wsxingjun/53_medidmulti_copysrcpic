@@ -14,7 +14,8 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
 
     //旋转的角度
-    private  float degree;
+    private float degree;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,36 +37,39 @@ public class MainActivity extends AppCompatActivity {
         final Paint paint = new Paint();
         //作画
         final Matrix matrix = new Matrix();
-        new Thread() {
-            @Override
-            public void run() {
-                for (;;){
-                    try {
-                        Thread.sleep(1000);
-                        degree+=10;
-                        matrix.setRotate(degree, copyBitmap.getWidth() / 2, copyBitmap.getHeight() / 2);
-                        canvas.drawBitmap(bitmap, matrix, paint);
+        matrix.setScale(0.5f,0.5f);
+        canvas.drawBitmap(bitmap, matrix, paint);
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                for (;;){
+//                    try {
+//                        Thread.sleep(1000);
+//                        degree+=10;
+//                        matrix.setRotate(degree, copyBitmap.getWidth() / 2, copyBitmap.getHeight() / 2);
+//                        canvas.drawBitmap(bitmap, matrix, paint);
+//
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//
+//                            }
+//                        });
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//
+//            }
+//        }.start();
 
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                //将画出的内容显示到ImageView中
-                                iv_copy.setImageBitmap(copyBitmap);
-                            }
-                        });
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
 
+        //将画出的内容显示到ImageView中
+        iv_copy.setImageBitmap(copyBitmap);
 
-            }
-        }.start();
-
-
-
-        for (int i=0; i<100; i++){
-            copyBitmap.setPixel(20+i,30, Color.BLACK);
+        for (int i = 0; i < 100; i++) {
+            copyBitmap.setPixel(20 + i, 30, Color.BLACK);
         }
 
     }
